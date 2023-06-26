@@ -15,7 +15,7 @@ resource "azurerm_servicebus_namespace" "servicebus_namespace" {
 
     content {
       type         = var.identity.type
-      identity_ids = contains(var.identity.type, "UserAssigned") ? var.identity.identity_ids : null
+      identity_ids = length(regexall("UserAssigned", var.identity.type)) > 0 ? var.identity.identity_ids : null
     }
   }
 }
