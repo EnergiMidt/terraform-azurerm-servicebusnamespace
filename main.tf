@@ -18,4 +18,6 @@ resource "azurerm_servicebus_namespace" "servicebus_namespace" {
       identity_ids = length(regexall("UserAssigned", var.identity.type)) > 0 ? var.identity.identity_ids : null
     }
   }
+
+  tags = var.tags
 }
